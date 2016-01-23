@@ -1,6 +1,9 @@
+from gevent import monkey
+monkey.patch_all()
+
 from bottle import default_app, route, hook, request
 
-from gevent import sleep
+from time import sleep
 
 app = default_app()
 

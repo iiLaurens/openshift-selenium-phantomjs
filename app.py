@@ -1,3 +1,6 @@
+from gevent import monkey
+monkey.patch_all()
+
 import os
 virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
@@ -13,9 +16,6 @@ try:
   exec(compiled_code, exec_namespace)
 except IOError:
   pass
-
-from gevent import monkey
-monkey.patch_all()
 
 from gevent.wsgi import WSGIServer
 from hello import app
