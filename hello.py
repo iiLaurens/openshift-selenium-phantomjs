@@ -1,13 +1,13 @@
-from bottle import Bottle
+from bottle import default_app
 
-app = Bottle()
+app = default_app()
 
-@app.route('/hello')
+@route('/hello')
 def hello():
     return "Hello World!"
 
-@app.route('/')
-@app.route('')
+@route('/')
+@route('')
 def mainpage():
     return "Welcome"
 
