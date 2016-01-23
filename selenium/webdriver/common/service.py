@@ -33,6 +33,7 @@ class Service(object):
             self.port = utils.free_port()
         if type(self.port) == str:
             self.ip,self.port = self.port.split(':')
+            self.port = int(self.port)
         else:
             self.ip = "127.0.0.1"
 
