@@ -33,6 +33,8 @@ class Service(object):
             self.port = utils.free_port()
         if type(self.port) == str:
             self.ip,self.port = self.port.split(':')
+        else:
+            self.ip = "127.0.0.1"
 
         self.start_error_message = start_error_message
         self.log_file = log_file
@@ -90,7 +92,7 @@ class Service(object):
                 raise WebDriverException("Can not connect to the Service %s" % self.path)
 
     def is_connectable(self):
-        return utils.is_connectable(self.port)
+        return utils.is_connectable(self.port,ip=self.ip)
 
     def send_remote_shutdown_command(self):
         try:
