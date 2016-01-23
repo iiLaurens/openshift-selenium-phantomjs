@@ -14,6 +14,9 @@ try:
 except IOError:
   pass
 
+from gevent import monkey
+monkey.patch_all()
+
 from gevent.wsgi import WSGIServer
 from hello import app
 
