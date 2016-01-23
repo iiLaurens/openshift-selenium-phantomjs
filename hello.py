@@ -7,7 +7,7 @@ def strip_path():
     # Remove trailing slashes from all request before routing the request
     request.environ['PATH_INFO'] = request.environ['PATH_INFO'].rstrip('/')
 
-@route('/hello/')
+@route('/hello')
 def hello():
     return "Hello World!"
 
