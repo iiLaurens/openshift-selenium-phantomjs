@@ -1,6 +1,6 @@
 from bottle import default_app, route, hook, request
 
-from time import sleep
+from gevent import sleep
 
 app = default_app()
 
