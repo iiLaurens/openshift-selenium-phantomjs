@@ -10,7 +10,7 @@ def strip_path():
 @route('/hello')
 def hello():
     for i in range(1,11):
-        yield i
+        yield str(i)
         sleep(1)
 
 @route('/')
