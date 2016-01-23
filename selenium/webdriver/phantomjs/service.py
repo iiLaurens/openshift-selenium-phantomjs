@@ -44,7 +44,7 @@ class Service(service.Service):
 
 
     def command_line_args(self):
-        return self.service_args + ["--webdriver=%d" % self.port]
+        return self.service_args + ["--webdriver=%s" % self.port]
 
     @property
     def service_url(self):
