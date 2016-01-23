@@ -32,7 +32,7 @@ def free_port():
     free_socket.close()
     return port
 
-def is_connectable(port):
+def is_connectable(port,ip="127.0.0.1"):
     """
     Tries to connect to the server at port to see if it is running.
 
@@ -42,7 +42,7 @@ def is_connectable(port):
     try:
         socket_ = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket_.settimeout(1)
-        socket_.connect(("127.0.0.1", port))
+        socket_.connect((ip, port))
         result = True
     except socket.error:
         result = False

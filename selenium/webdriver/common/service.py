@@ -31,6 +31,8 @@ class Service(object):
         self.port = port
         if self.port == 0:
             self.port = utils.free_port()
+        if type(self.port) == str:
+            self.ip,self.port = self.port.split(':')
 
         self.start_error_message = start_error_message
         self.log_file = log_file
