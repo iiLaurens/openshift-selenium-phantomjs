@@ -1,4 +1,4 @@
-from bottle import default_app
+from bottle import default_app, route
 
 app = default_app()
 
