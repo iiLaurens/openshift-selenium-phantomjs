@@ -1,5 +1,7 @@
 from bottle import default_app, route, hook, request
 
+from time import sleep
+
 app = default_app()
 
 @hook('before_request')
