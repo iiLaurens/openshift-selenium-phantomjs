@@ -18,8 +18,6 @@ except IOError:
   pass
 
 from gevent.wsgi import WSGIServer
-from gevent.pool import Pool
-pool = Pool(None) # Allow unlimited workers
 
 from hello import app
 
@@ -27,5 +25,3 @@ ip   = os.environ['OPENSHIFT_PYTHON_IP']
 port = int(os.environ['OPENSHIFT_PYTHON_PORT'])
 
 app.run(host=ip, port=port, server='gevent')
-#http_server = WSGIServer((ip, port), app, spawn=pool)
-#http_server.serve_forever()
