@@ -25,7 +25,7 @@ def application(environ, start_response):
     else:
         ctype = 'text/html'
         response_body = 'The URL after applying a search in DuckDuckGo.com is: ' + PhantomJS_example()
-        response_body.encode('UTF-8')
+        response_body = response_body.encode('UTF-8')
 
     status = '200 OK'
     response_headers = [('Content-Type', ctype), ('Content-Length', str(len(response_body)))]
