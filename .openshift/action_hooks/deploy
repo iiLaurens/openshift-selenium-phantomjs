@@ -1,10 +1,10 @@
 #!/bin/bash -xv
 mkdir -p ${OPENSHIFT_DATA_DIR}phantomjs/bin
 cd ${OPENSHIFT_DATA_DIR}phantomjs/bin
+export PATH=$PATH:${OPENSHIFT_DATA_DIR}phantomjs/bin
 if [ ! -f phantomjs ]; then
    wget https://github.com/iiLaurens/openshift-selenium-phantomjs/releases/download/0.1/phantomjs-1.9.8-patched.tar.gz
    tar xf phantomjs-1.9.8-patched.tar.gz
    rm phantomjs-1.9.8-patched.tar.gz
+   chmod +x phantomjs
 fi
-
-export PATH=$PATH:${OPENSHIFT_DATA_DIR}phantomjs/bin
