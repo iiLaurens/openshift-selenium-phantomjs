@@ -14,12 +14,3 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-
-from .phantomjs.webdriver import WebDriver as PhantomJS
-from .remote.webdriver import WebDriver as Remote
-from .common.desired_capabilities import DesiredCapabilities
-from .common.action_chains import ActionChains
-from .common.touch_actions import TouchActions
-from .common.proxy import Proxy
-
-__version__ = '2.49.2'
