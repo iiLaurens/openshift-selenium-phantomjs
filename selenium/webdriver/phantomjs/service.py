@@ -48,7 +48,7 @@ class Service(service.Service):
             self.ip = "127.0.0.1"
 
 
-        service.Service.__init__(self, executable_path, port="%s:%d" %  (self.ip,self.port), ", log_file=open(log_path, 'w'))
+        service.Service.__init__(self, executable_path, port="%s:%d" %  (self.ip,self.port), log_file=open(log_path, 'w'))
 
 
     def command_line_args(self):
