@@ -40,6 +40,7 @@ class Service(service.Service):
         if not log_path:
             log_path = "ghostdriver.log"
 
+        self.port = port
         #hotfix to allow for ip to be given in port parameter
         if type(self.port) == str:
             self.ip,self.port = self.port.split(':')
