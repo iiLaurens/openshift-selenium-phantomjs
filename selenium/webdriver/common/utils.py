@@ -32,7 +32,7 @@ def free_port():
     free_socket.close()
     return port
 
-def is_connectable(port,ip="127.0.0.1"):
+def is_connectable(port,ip):
     """
     Tries to connect to the server at port to see if it is running.
 

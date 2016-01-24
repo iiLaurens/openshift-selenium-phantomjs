@@ -22,7 +22,7 @@ class Service(service.Service):
     Object that manages the starting and stopping of PhantomJS / Ghostdriver
     """
 
-    def __init__(self, executable_path, port=0, service_args=None, log_path=None):
+    def __init__(self, executable_path, port=0, ip='127.0.0.1', service_args=None, log_path=None):
         """
         Creates a new instance of the Service
 
@@ -40,18 +40,26 @@ class Service(service.Service):
         if not log_path:
             log_path = "ghostdriver.log"
 
-        service.Service.__init__(self, executable_path, port=port, log_file=open(log_path, 'w'))
+        #hotfix to allow for ip to be given in port parameter
+        if type(self.port) == str:
+            self.ip,self.port = self.port.split(':')
+            self.port = int(self.port)
+        else:
+            self.ip = "127.0.0.1"
+
+
+        service.Service.__init__(self, executable_path, port="%s:%d" %  (self.ip,self.port), ", log_file=open(log_path, 'w'))
 
 
     def command_line_args(self):
-        return self.service_args + ["--webdriver=%s" % self.port]
+        return self.service_args + ["--webdriver=%s:%d" %  (self.ip,self.port)]
 
     @property
     def service_url(self):
         """
         Gets the url of the GhostDriver Service
         """
-        return "http://localhost:%d/wd/hub" % self.port
+        return "http://%s:%d/wd/hub" % (self.ip,self.port)
 
     def send_remote_shutdown_command(self):
         pass

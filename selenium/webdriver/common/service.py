@@ -31,6 +31,8 @@ class Service(object):
         self.port = port
         if self.port == 0:
             self.port = utils.free_port()
+
+         #hotfix to allow for ip to be given in port parameter
         if type(self.port) == str:
             self.ip,self.port = self.port.split(':')
             self.port = int(self.port)
@@ -94,7 +96,7 @@ class Service(object):
                 raise WebDriverException("Can not connect to the Service %s" % self.path)
 
     def is_connectable(self):
-        return utils.is_connectable(self.port,ip=self.ip)
+        return utils.is_connectable(self.port,self.ip)
 
     def send_remote_shutdown_command(self):
         try:
@@ -106,7 +108,7 @@ class Service(object):
             URLError = urllib2.URLError
 
         try:
-            url_request.urlopen("http://127.0.0.1:%d/shutdown" % self.port)
+            url_request.urlopen("http://%s:%d/shutdown" % (self.ip,self.port))
         except URLError:
             return
         count = 0
