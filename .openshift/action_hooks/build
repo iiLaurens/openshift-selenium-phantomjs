@@ -1,0 +1,11 @@
+if [ -d "$OPENSHIFT_DATA_DIR/phantomjs/bin" ]; then
+   cd $OPENSHIFT_DATA_DIR
+   mkdir phantomjs
+   mkdir bin
+   cd phantomjs/bin
+   wget https://github.com/iiLaurens/openshift-selenium-phantomjs/releases/download/0.1/phantomjs-1.9.8-patched.tar.gz
+   tar xf phantomjs-1.9.8-patched.tar.gz
+   rm phantomjs-1.9.8-patched.tar.gz
+fi
+
+export PATH=$PATH:$OPENSHIFT_DATA_DIR/phantomjs/bin
