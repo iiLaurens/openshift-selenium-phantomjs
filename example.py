@@ -8,7 +8,7 @@ from selenium import webdriver
 # Finally, you might want to ignore SSL errors or change the SSL protocol to prevent errors when visiting HTTPS pages.
 driver = webdriver.PhantomJS(
         executable_path=os.path.join(os.environ['OPENSHIFT_DATA_DIR'],'phantomjs/bin/phantomjs'),
-        service_log_path = os.path.join(os.environ['OPENSHIFT_DATA_DIR'],'webdriver.log'),
+        service_log_path = os.path.join(os.environ['OPENSHIFT_DATA_DIR'],'phantomjs/webdriver.log'),
         port = '%s:17771' % os.environ['OPENSHIFT_PYTHON_IP'],
         service_args=['--ignore-ssl-errors=true']
 )
