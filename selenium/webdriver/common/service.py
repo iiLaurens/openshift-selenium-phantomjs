@@ -64,7 +64,6 @@ class Service(object):
         try:
             cmd = [self.path]
             cmd.extend(self.command_line_args())
-            print cmd
             self.process = subprocess.Popen(cmd, env=self.env,
                                             close_fds=platform.system() != 'Windows',
                                             stdout=self.log_file, stderr=self.log_file)
