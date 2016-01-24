@@ -1,3 +1,4 @@
+#!/bin/bash
 if [ -d "$OPENSHIFT_DATA_DIR/phantomjs/bin" ]; then
    cd $OPENSHIFT_DATA_DIR
    mkdir phantomjs
