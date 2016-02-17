@@ -1,0 +1,2 @@
+#!/bin/bash
+nohup ${OPENSHIFT_DATA_DIR}/phantomjs/bin/phantomjs --webdriver=$OPENSHIFT_PYTHON_IP:17777 --ignore-ssl-errors=true &
