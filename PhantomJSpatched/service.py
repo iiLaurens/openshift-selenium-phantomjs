@@ -15,6 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 from selenium.webdriver.common import service
+import socket
 
 
 class Service(service.Service):
