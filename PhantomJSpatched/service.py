@@ -39,14 +39,12 @@ class Service(service.Service):
             self.service_args = []
         else:
             self.service_args=service_args[:]
-        if not log_path:
-            log_path = "ghostdriver.log"
 
         if port == 0:
             count = 0
-            self.port = 19999
-            while self.is_connectable() and count < 25:
-                self.port = randint(20000,30000)
+            port = randint(20000,30000)
+            while self.is_connectable(port) and count < 25:
+                port = randint(20000,30000)
                 count += 1
 
 
@@ -56,16 +54,18 @@ class Service(service.Service):
     def command_line_args(self):
         return self.service_args + ["--webdriver=%s:%d" % (self.ip,self.port)]
 
-    def is_connectable(self):
+    def is_connectable(self,port=0):
         """
         Tries to connect to the server at port to see if it is running.
         :Args:
          - port: The port to connect.
         """
+        if port == 0:
+            port = self.port
         try:
             socket_ = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             socket_.settimeout(1)
-            socket_.connect((self.ip, self.port))
+            socket_.connect((self.ip, port))
             result = True
         except socket.error:
             result = False
