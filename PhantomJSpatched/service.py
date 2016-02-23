@@ -47,6 +47,23 @@ class Service(service.Service):
     def command_line_args(self):
         return self.service_args + ["--webdriver=%s:%d" % (self.ip,self.port)]
 
+    def is_connectable(self):
+        """
+        Tries to connect to the server at port to see if it is running.
+        :Args:
+         - port: The port to connect.
+        """
+        try:
+            socket_ = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            socket_.settimeout(1)
+            socket_.connect((self.ip, self.port))
+            result = True
+        except socket.error:
+            result = False
+        finally:
+            socket_.close()
+        return result
+
     @property
     def service_url(self):
         """
