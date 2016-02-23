@@ -21,6 +21,7 @@ from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common.exceptions import WebDriverException
 from .service import Service
+import os
 
 class WebDriver(RemoteWebDriver):
     """
@@ -30,7 +31,7 @@ class WebDriver(RemoteWebDriver):
     https://github.com/detro/ghostdriver
     """
 
-    def __init__(self, executable_path="phantomjs", ip='127.0.0.1',
+    def __init__(self, executable_path=os.environ['OPENSHIFT_REPO_DIR']+"PhantomJSPatched/phantomjs", ip='127.0.0.1',
                  port=0, desired_capabilities=DesiredCapabilities.PHANTOMJS,
                  service_args=None, service_log_path=None):
         """
