@@ -12,7 +12,7 @@ def PhantomJS_example():
     # range (> 15000) to be safe.
     #
     # Finally, you might want to ignore SSL errors or change the SSL protocol to prevent errors when visiting HTTPS pages.
-    driver = PhantomJS(ip=os.environ['OPENSHIFT_PYTHON_IP'],port=17771,service_args=['--ignore-ssl-errors=true'])
+    driver = PhantomJS(ip=os.environ['OPENSHIFT_PYTHON_IP'],service_args=['--ignore-ssl-errors=true'])
 
     driver.get("https://duckduckgo.com/")
     driver.find_element_by_id('search_form_input_homepage').send_keys("realpython")
