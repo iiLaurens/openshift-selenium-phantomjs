@@ -39,6 +39,8 @@ class Service(service.Service):
             self.service_args = []
         else:
             self.service_args=service_args[:]
+        if not log_path:
+            log_path = "ghostdriver.log"
 
         if port == 0:
             count = 0
