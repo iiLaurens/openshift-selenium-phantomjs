@@ -42,6 +42,7 @@ class Service(service.Service):
 
         if port == 0:
             count = 0
+            self.port = 19999
             while self.is_connectable() and count < 25:
                 self.port = randint(20000,30000)
                 count += 1
