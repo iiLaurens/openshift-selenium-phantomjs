@@ -16,7 +16,7 @@
 # under the License.
 from selenium.webdriver.common import service
 import socket
-
+from random import randint
 
 class Service(service.Service):
     """
@@ -39,8 +39,13 @@ class Service(service.Service):
             self.service_args = []
         else:
             self.service_args=service_args[:]
-        if not log_path:
-            log_path = "ghostdriver.log"
+
+        if port == 0:
+            count = 0
+            while self.is_connectable() and count < 25:
+                self.port = randint(20000,30000)
+                count += 1
+
 
         service.Service.__init__(self, executable_path, port=port)
 
